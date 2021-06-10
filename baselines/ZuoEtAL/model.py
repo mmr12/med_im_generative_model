@@ -86,7 +86,7 @@ class BetaDiscriminant(nn.Module):
 
     def forward(self, beta):
         out = beta
-        for layer in self.layers:
+        for i, layer in enumerate(self.layers):
             out = layer(out)
         return out
 
@@ -104,5 +104,3 @@ class Decoder(nn.Module):
         out = torch.cat((beta, theta), dim=1)
         out = self.unet(out)
         return out
-
-
